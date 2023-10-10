@@ -6,6 +6,7 @@ interface Props {
   todos: ListOfTodos
   onRemoveTodo: ({ id }: TodoId) => void
   onToggleCompleteTodo: ({ id, completed }: Pick<TodoType, 'id' | 'completed'>) => void
+  setTitle: (params: Omit<TodoType, 'completed'>) => void
 }
 
 export const Todos: React.FC<Props> = ({ todos, onRemoveTodo, onToggleCompleteTodo }) => {

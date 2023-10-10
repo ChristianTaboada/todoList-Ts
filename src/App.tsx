@@ -66,6 +66,19 @@ const App = (): JSX.Element => {
     setTodos(newTodos)
   }
 
+  const handleUpdateTitle = ({ id, title }: { id: string, title: string }): void => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          title
+        }
+      }
+      return todo
+    })
+    setTodos(newTodos)
+  }
+
   const activeCount = todos.filter(todo => !todo.completed).length
   const completedCount = todos.length - activeCount
 
@@ -81,6 +94,7 @@ const App = (): JSX.Element => {
       <Todos
       onToggleCompleteTodo={handleCompleted}
       onRemoveTodo={handleRemove}
+      setTitle={handleUpdateTitle}
       todos={filteredTodos} />
       <Footer
       activeCount={activeCount}
